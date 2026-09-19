@@ -1,1532 +1,434 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aayesha Institute | 2026 Govt-Recognized Certificate & Admission Portal</title>
+    <title>Aayesha Institute - Portal</title>
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome 6 Icons -->
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts for Futuristic Tech & Elegant Certificates -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Orbitron:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Reenie+Beanie&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            900: '#030712',
-                            800: '#0b0f19',
-                            700: '#111827',
-                            card: 'rgba(17, 24, 39, 0.7)',
-                            border: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        neon: {
-                            cyan: '#06b6d4',
-                            blue: '#3b82f6',
-                            purple: '#8b5cf6',
-                            gold: '#f59e0b',
-                            amber: '#d97706',
-                            emerald: '#10b981'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        tech: ['Space Grotesk', 'sans-serif'],
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        certTitle: ['Cinzel', 'serif'],
-                        signature: ['Reenie Beanie', 'cursive']
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: #111827;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --gold: #d97706;
+            --gold-light: #fbbf24;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
         body {
-            background-color: #030712;
-            color: #f3f4f6;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-                radial-gradient(at 50% 100%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
-            background-attachment: fixed;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        /* Navigation Header */
+        header {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .glass-panel-glow {
-            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .glow-text-cyan {
-            text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 1.2rem;
         }
 
-        .glow-text-gold {
-            text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Holographic Seal Effect */
-        .hologram-seal {
-            background: linear-gradient(135deg, #f59e0b 0%, #ec4899 25%, #8b5cf6 50%, #06b6d4 75%, #10b981 100%);
-            background-size: 300% 300%;
-            animation: hologramShift 6s ease infinite;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+        .govt-tag {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        @keyframes hologramShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Container Layout */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            flex: 1;
         }
 
-        /* Certificate Watermark Pattern */
-        .cert-bg-pattern {
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 60%),
-                repeating-linear-gradient(45deg, rgba(15, 23, 42, 0.02) 0px, rgba(15, 23, 42, 0.02) 2px, transparent 2px, transparent 10px);
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
-        /* Barcode CSS Lines */
-        .barcode-strip {
-            background: repeating-linear-gradient(
-                90deg,
-                #000 0px,
-                #000 2px,
-                #fff 2px,
-                #fff 4px,
-                #000 4px,
-                #000 7px,
-                #fff 7px,
-                #fff 8px
-            );
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        ::-webkit-scrollbar-track {
-            background: #030712;
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-cyan);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #1f2937;
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0b0f19;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            margin-top: 1rem;
+        }
+
+        /* Dynamic Govt Certificate Styling */
+        .certificate-frame {
+            background: #fff;
+            color: #111;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 12px solid #1e293b;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .cert-header {
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .cert-id-tag {
+            font-family: monospace;
+            background: #f1f5f9;
+            padding: 6px 12px;
             border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #374151;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #334155;
+            display: inline-block;
+            margin-top: 6px;
+            border: 1px dashed #cbd5e1;
         }
 
-        /* Print CSS optimization */
+        .cert-body {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .candidate-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            display: inline-block;
+            padding: 0 1rem 4px;
+            margin: 10px 0;
+        }
+
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .signature-box {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .signature-line {
+            width: 120px;
+            border-bottom: 1px solid #000;
+            margin-bottom: 4px;
+        }
+
+        /* Print Style */
         @media print {
-            body {
-                background: #ffffff !important;
-                color: #000000 !important;
-            }
-            body * {
-                visibility: hidden;
-            }
-            #printable-certificate-container, #printable-certificate-container * {
-                visibility: visible;
-            }
-            #printable-certificate-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100% !important;
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                box-shadow: none !important;
-                background: #ffffff !important;
-            }
-            .no-print {
+            header, .no-print {
                 display: none !important;
+            }
+            body {
+                background: #fff;
+            }
+            main {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .certificate-frame {
+                border: 6px solid #000;
+                box-shadow: none;
             }
         }
     </style>
 </head>
-<body class="font-sans min-h-screen flex flex-col justify-between selection:bg-neon-cyan selection:text-black">
+<body>
 
-    <!-- Navigation Top Bar -->
-    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800 no-print">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Institute Brand & Govt Recognition Badge -->
-                <div class="flex items-center space-x-4 cursor-pointer" onclick="switchTab('dashboard')">
-                    <div class="relative">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-2xl shadow-lg shadow-amber-500/20">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <span class="absolute -bottom-1 -right-1 flex h-4 w-4">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-slate-900"></span>
-                        </span>
-                    </div>
-                    <div>
-                        <div class="flex items-center space-x-2">
-                            <h1 class="font-orbitron font-extrabold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-cyan-400 tracking-wider">
-                                AAYESHA INSTITUTE
-                            </h1>
-                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest hidden sm:inline-block">
-                                Govt Approved 2026
-                            </span>
-                        </div>
-                        <p class="text-xs text-slate-400 font-tech flex items-center gap-2">
-                            <span>ISO 9001:2015 Accredited</span>
-                            <span class="text-slate-600">•</span>
-                            <span class="text-cyan-400 font-mono text-[11px]">Govt Reg: MH-GOVT-ED-2026-889</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Right Header Controls -->
-                <div class="flex items-center space-x-4">
-                    <div class="hidden lg:flex flex-col items-end font-mono text-xs">
-                        <div class="flex items-center space-x-2 text-emerald-400">
-                            <i class="fa-solid fa-shield-halved text-xs"></i>
-                            <span class="font-bold tracking-wider">VERIFICATION NODE ACTIVE</span>
-                        </div>
-                        <span id="live-time-ticker" class="text-slate-400 text-[11px]">---</span>
-                    </div>
-
-                    <button onclick="switchTab('admission')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all transform hover:-translate-y-0.5 flex items-center space-x-2">
-                        <i class="fa-solid fa-user-plus text-sm"></i>
-                        <span class="hidden sm:inline">New Admission</span>
-                    </button>
-                </div>
-            </div>
+    <!-- Header Section -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">AI</div>
+            <div class="brand-title">Aayesha Institute Portal</div>
+        </div>
+        <div class="govt-tag">
+            <i class="fa-solid fa-shield-halved"></i> Govt. Approved Verification
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6 no-print">
-        
-        <!-- Left Navigation Sidebar -->
-        <aside class="w-full md:w-64 flex-shrink-0">
-            <div class="glass-panel rounded-2xl p-4 sticky top-28 space-y-4">
-                <div class="px-3 py-1">
-                    <p class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">Portal Controls</p>
-                </div>
-
-                <nav class="space-y-1.5" id="sidebar-nav">
-                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all text-slate-300 hover:bg-slate-800/80">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-chart-line w-5 text-cyan-400"></i>
-                            <span>Dashboard Analytics</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
-                    </button>
-
-                    <button onclick="switchTab('admission')" id="nav-admission" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all text-slate-300 hover:bg-slate-800/80">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-file-signature w-5 text-amber-400"></i>
-                            <span>Candidate Admission</span>
-                        </div>
-                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-600"></i>
-                    </button>
-
-                    <button onclick="switchTab('directory')" id="nav-directory" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all text-slate-300 hover:bg-slate-800/80">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-users-gear w-5 text-indigo-400"></i>
-                            <span>Candidate Directory</span>
-                        </div>
-                        <span id="badge-total-students" class="text-[10px] font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full">0</span>
-                    </button>
-
-                    <button onclick="switchTab('vault')" id="nav-vault" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all text-slate-300 hover:bg-slate-800/80">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-certificate w-5 text-emerald-400"></i>
-                            <span>Certificate Vault</span>
-                        </div>
-                        <span id="badge-total-certs" class="text-[10px] font-mono bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full font-bold">0</span>
-                    </button>
-
-                    <button onclick="switchTab('verify')" id="nav-verify" class="nav-btn w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold transition-all text-slate-300 hover:bg-slate-800/80">
-                        <div class="flex items-center space-x-3">
-                            <i class="fa-solid fa-shield-check w-5 text-teal-400"></i>
-                            <span>Govt Verification Portal</span>
-                        </div>
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    </button>
-                </nav>
-
-                <!-- System Security Status Box -->
-                <div class="pt-4 border-t border-slate-800/80 space-y-3">
-                    <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 text-xs space-y-2">
-                        <div class="flex items-center justify-between text-[11px] font-bold text-amber-400">
-                            <span class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-stamp"></i> Govt Approval
-                            </span>
-                            <span class="text-emerald-400 font-mono text-[10px]">VERIFIED</span>
-                        </div>
-                        <p class="text-[11px] text-slate-400 leading-snug">
-                            All Certificates generated carry unique 2026 Govt Verification IDs & SHA-256 Hashes.
-                        </p>
-                        <button onclick="restoreDefaultData()" class="w-full text-left text-[10px] font-mono text-cyan-400 hover:text-cyan-300 underline pt-1 block">
-                            ↻ Reset Sample Govt Data
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Workspace Section -->
-        <main class="flex-1 min-w-0">
+    <!-- Main Container -->
+    <main>
+        <div class="grid-container">
             
-            <!-- SECTION 1: DASHBOARD ANALYTICS -->
-            <section id="tab-dashboard" class="tab-content space-y-6">
-                <!-- Banner -->
-                <div class="glass-panel glass-panel-glow rounded-2xl p-6 relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-gradient-to-tr from-amber-500/10 to-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div>
-                            <div class="flex items-center space-x-2 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider mb-1">
-                                <i class="fa-solid fa-bolt"></i> 2026 Smart Administration Control
-                            </div>
-                            <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-orbitron">
-                                Aayesha Institute Overview
-                            </h2>
-                            <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-                                Real-time candidate registration, government-recognized certificate issuance, and cryptographic verification logs.
-                            </p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="switchTab('admission')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg transition">
-                                <i class="fa-solid fa-plus mr-1"></i> Register Student
-                            </button>
-                            <button onclick="switchTab('verify')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold px-4 py-2.5 rounded-xl transition">
-                                <i class="fa-solid fa-shield-halved mr-1"></i> Verify Cert ID
-                            </button>
-                        </div>
-                    </div>
+            <!-- Admission Form Section -->
+            <section class="card no-print">
+                <div class="card-title">
+                    <i class="fa-solid fa-user-plus"></i> Candidate Admission Form
                 </div>
-
-                <!-- Stats Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <p class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Total Candidates</p>
-                            <h3 id="stat-total-candidates" class="text-3xl font-orbitron font-bold text-white mt-1">0</h3>
-                            <span class="text-[11px] text-emerald-400 font-medium inline-flex items-center mt-1">
-                                <i class="fa-solid fa-arrow-trend-up mr-1 text-[10px]"></i> Live Enrolled
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-user-graduate"></i>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <p class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Govt Certs Issued</p>
-                            <h3 id="stat-certs-issued" class="text-3xl font-orbitron font-bold text-amber-400 mt-1">0</h3>
-                            <span class="text-[11px] text-amber-400 font-medium inline-flex items-center mt-1">
-                                <i class="fa-solid fa-stamp mr-1 text-[10px]"></i> Hologram Verified
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-award"></i>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <p class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Active Programs</p>
-                            <h3 id="stat-active-courses" class="text-3xl font-orbitron font-bold text-indigo-400 mt-1">6</h3>
-                            <span class="text-[11px] text-indigo-400 font-medium inline-flex items-center mt-1">
-                                <i class="fa-solid fa-laptop-code mr-1 text-[10px]"></i> ISO Recognized
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-book-bookmark"></i>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
-                        <div>
-                            <p class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">Fees Received</p>
-                            <h3 id="stat-fees-collected" class="text-3xl font-orbitron font-bold text-emerald-400 mt-1">₹0</h3>
-                            <span class="text-[11px] text-emerald-400 font-medium inline-flex items-center mt-1">
-                                <i class="fa-solid fa-circle-check mr-1 text-[10px]"></i> Payment Complete
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Registrations & Certificate Stream -->
-                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
-                    <div class="p-4 sm:p-5 border-b border-slate-800/80 flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <i class="fa-solid fa-list-check text-amber-400"></i>
-                            <h3 class="font-bold text-white text-sm">Recent Admissions & Government Verification Status</h3>
-                        </div>
-                        <button onclick="switchTab('directory')" class="text-xs text-cyan-400 hover:text-cyan-300 font-mono font-semibold">
-                            View Directory →
-                        </button>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-slate-900/80 text-slate-400 font-mono text-[11px] uppercase tracking-wider border-b border-slate-800">
-                                    <th class="py-3 px-4">Candidate Name</th>
-                                    <th class="py-3 px-4">Reg / Roll No</th>
-                                    <th class="py-3 px-4">Course Track</th>
-                                    <th class="py-3 px-4">Govt Verification ID</th>
-                                    <th class="py-3 px-4">Cert Status</th>
-                                    <th class="py-3 px-4 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="dashboard-recent-table" class="divide-y divide-slate-800/60 font-sans">
-                                <!-- Dynamic dynamic rows inserted here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 2: CANDIDATE ADMISSION FORM -->
-            <section id="tab-admission" class="tab-content hidden space-y-6">
-                <div class="glass-panel rounded-2xl border border-slate-800 p-6 sm:p-8">
-                    
-                    <div class="border-b border-slate-800 pb-5 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-2">
-                        <div>
-                            <div class="flex items-center space-x-2 text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">
-                                <span>Aayesha Institute Official Registry</span>
-                                <span>•</span>
-                                <span class="text-cyan-400">2026 Portal</span>
-                            </div>
-                            <h2 class="text-2xl font-bold font-orbitron text-white mt-1">Candidate Admission & Cert Registration</h2>
-                            <p class="text-xs text-slate-400">Input student credentials to persist record and issue holographic Govt-Approved certificate.</p>
-                        </div>
-                        <div class="bg-slate-900/90 text-cyan-400 text-xs font-mono px-3 py-1.5 rounded-xl border border-slate-800 self-start md:self-auto">
-                            URI: <span class="text-slate-200">/dashboard/candidates/admission</span>
-                        </div>
-                    </div>
-
-                    <form id="admission-form" onsubmit="handleCandidateSubmit(event)" class="space-y-6">
-                        <input type="hidden" id="edit-candidate-id" value="">
-
-                        <!-- Personal Details -->
-                        <div class="space-y-4">
-                            <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2 border-l-2 border-amber-500 pl-2">
-                                <i class="fa-solid fa-user text-amber-400"></i> Personal Identification
-                            </h3>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Candidate Full Name *</label>
-                                    <input type="text" id="candidate-name" required placeholder="e.g. Aadil Khan" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Father's / Guardian Name *</label>
-                                    <input type="text" id="father-name" required placeholder="e.g. Farooq Khan" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Date of Birth *</label>
-                                    <input type="date" id="dob" required class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Gender *</label>
-                                    <select id="gender" required class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Mobile Contact *</label>
-                                    <input type="tel" id="mobile" required placeholder="9876543210" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-                                    <input type="email" id="email" placeholder="student@example.com" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                </div>
-                            </div>
-
-                            <!-- Photo Upload Section -->
-                            <div class="mt-4 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                                <label class="block text-xs font-medium text-slate-300 mb-2">Student Photo Upload & Biometric Preview</label>
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-16 h-16 rounded-xl border-2 border-dashed border-amber-500/40 bg-slate-900 overflow-hidden flex items-center justify-center flex-shrink-0">
-                                        <img id="photo-preview-img" src="https://placehold.co/150x150/0b0f19/f59e0b?text=Student" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="flex-1 space-y-1">
-                                        <input type="file" id="photo-upload" accept="image/*" onchange="previewCandidatePhoto(event)" class="text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 cursor-pointer">
-                                        <p class="text-[11px] text-slate-500">Supports PNG/JPG photo. Auto-cropped to biometric certificate box.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Academic & Course Track -->
-                        <div class="space-y-4 pt-2">
-                            <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2 border-l-2 border-cyan-500 pl-2">
-                                <i class="fa-solid fa-graduation-cap text-cyan-400"></i> Course Track & Academic Details
-                            </h3>
-
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Select Program Course *</label>
-                                    <select id="course-name" required class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                        <option value="Advance Diploma in Computer Applications (ADCA)">Advance Diploma in Computer Applications (ADCA)</option>
-                                        <option value="Diploma in Financial Accounting & Tally Prime GST">Diploma in Financial Accounting & Tally Prime GST</option>
-                                        <option value="Full Stack Web & AI Software Development">Full Stack Web & AI Software Development</option>
-                                        <option value="Graphic Design, UI/UX & Digital Media">Graphic Design, UI/UX & Digital Media</option>
-                                        <option value="Cyber Security & Network Hardware Engineering">Cyber Security & Network Hardware Engineering</option>
-                                        <option value="Digital Marketing & AI Growth Analytics">Digital Marketing & AI Growth Analytics</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Enrollment / Roll Number *</label>
-                                    <input type="text" id="roll-no" required placeholder="AI-2026-XXXX" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-amber-400 font-mono font-bold focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Course Duration</label>
-                                    <select id="duration" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                        <option value="3 Months">3 Months</option>
-                                        <option value="6 Months">6 Months</option>
-                                        <option value="12 Months (1 Year)">12 Months (1 Year)</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Start Date</label>
-                                    <input type="date" id="start-date" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Completion Date</label>
-                                    <input type="date" id="end-date" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Passing Grade / Evaluation *</label>
-                                    <select id="grade" required class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none">
-                                        <option value="A+ Grade (Outstanding Performance)">A+ Grade (Outstanding Performance)</option>
-                                        <option value="A Grade (Excellent)">A Grade (Excellent)</option>
-                                        <option value="B+ Grade (Very Good)">B+ Grade (Very Good)</option>
-                                        <option value="B Grade (Good)">B Grade (Good)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Government Registration & Cert ID Generator -->
-                        <div class="space-y-4 pt-2">
-                            <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center justify-between border-l-2 border-emerald-500 pl-2">
-                                <span class="flex items-center gap-2">
-                                    <i class="fa-solid fa-stamp text-emerald-400"></i> Government Recognized Certificate Verification ID
-                                </span>
-                                <button type="button" onclick="generateNewGovtCertID()" class="text-[11px] text-cyan-400 hover:text-cyan-300 font-mono font-normal underline">
-                                    <i class="fa-solid fa-rotate mr-1"></i> Regenerate Govt ID
-                                </button>
-                            </h3>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Unique Govt Approved Cert ID *</label>
-                                    <div class="relative">
-                                        <input type="text" id="govt-cert-id" required readonly class="w-full text-xs bg-slate-950 border border-amber-500/50 rounded-xl px-3.5 py-2.5 text-amber-400 font-mono font-bold tracking-wider focus:outline-none">
-                                        <i class="fa-solid fa-shield-check absolute right-3 top-3 text-emerald-400 text-xs"></i>
-                                    </div>
-                                    <p class="text-[11px] text-slate-500 mt-1">Format: <code class="text-slate-400">MH-GOVT-VERI-2026-XXXX-XX</code> or <code class="text-slate-400">ISO-9001-REG-2026-XXXX</code></p>
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Government Affiliation Tag</label>
-                                    <select id="govt-affiliation" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                                        <option value="MH-GOVT-ED-RECG">MH State Board & Skill Development Recognized</option>
-                                        <option value="MSME-GOVT-INDIA">MSME Govt. of India Registered Center</option>
-                                        <option value="ISO-9001-2015-CERT">ISO 9001:2015 Certified Educational Quality Standard</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Fee Structure -->
-                        <div class="space-y-4 pt-2">
-                            <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2 border-l-2 border-indigo-500 pl-2">
-                                <i class="fa-solid fa-wallet text-indigo-400"></i> Fee Payment Status
-                            </h3>
-
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Total Fee (₹)</label>
-                                    <input type="number" id="total-fee" value="12000" oninput="calculateFeeStatus()" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Paid Fee (₹)</label>
-                                    <input type="number" id="paid-fee" value="12000" oninput="calculateFeeStatus()" class="w-full text-xs bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-300 mb-1">Payment Status</label>
-                                    <input type="text" id="payment-status" readonly value="FULL PAID" class="w-full text-xs bg-slate-950 border border-slate-800 text-emerald-400 font-bold px-3.5 py-2.5 rounded-xl focus:outline-none">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Submit Buttons -->
-                        <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-                            <button type="button" onclick="resetAdmissionForm()" class="w-full sm:w-auto px-4 py-2.5 text-xs font-mono text-slate-400 hover:text-white border border-slate-700 rounded-xl transition">
-                                Clear Inputs
-                            </button>
-                            
-                            <div class="w-full sm:w-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-                                <button type="submit" name="action" value="save_only" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs px-5 py-2.5 rounded-xl transition border border-slate-700">
-                                    <i class="fa-solid fa-floppy-disk mr-1"></i> Save Candidate
-                                </button>
-                                <button type="submit" name="action" value="save_and_certify" class="w-full sm:w-auto bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs px-6 py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20">
-                                    <i class="fa-solid fa-certificate mr-1"></i> Save & Issue Holographic Certificate
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </section>
-
-            <!-- SECTION 3: CANDIDATE DIRECTORY -->
-            <section id="tab-directory" class="tab-content hidden space-y-6">
-                <div class="glass-panel rounded-2xl border border-slate-800 p-6">
-                    
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div>
-                            <h2 class="text-2xl font-bold font-orbitron text-white">Candidates Directory</h2>
-                            <p class="text-xs text-slate-400">Search, manage, edit candidate records, and export registered data.</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <button onclick="exportToCSV()" class="bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 text-xs font-mono font-semibold px-3.5 py-2 rounded-xl transition">
-                                <i class="fa-solid fa-file-excel mr-1"></i> Export CSV
-                            </button>
-                            <button onclick="exportToJSON()" class="bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 text-xs font-mono font-semibold px-3.5 py-2 rounded-xl transition">
-                                <i class="fa-solid fa-code mr-1"></i> Export JSON
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Search and Filters -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-                        <div class="relative">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
-                            <input type="text" id="dir-search" onkeyup="renderCandidateDirectory()" placeholder="Search Name, Reg No, or Govt Cert ID..." class="w-full text-xs pl-9 pr-3 py-2.5 bg-slate-900/90 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
-                        </div>
-                        <div>
-                            <select id="dir-filter-course" onchange="renderCandidateDirectory()" class="w-full text-xs py-2.5 px-3 bg-slate-900/90 border border-slate-700 rounded-xl text-slate-300 focus:outline-none">
-                                <option value="ALL">All Courses</option>
-                                <option value="ADCA">ADCA</option>
-                                <option value="Tally">Tally Prime GST</option>
-                                <option value="Web">Web & AI Dev</option>
-                                <option value="Graphic">Graphic Design</option>
-                            </select>
-                        </div>
-                        <div>
-                            <select id="dir-filter-status" onchange="renderCandidateDirectory()" class="w-full text-xs py-2.5 px-3 bg-slate-900/90 border border-slate-700 rounded-xl text-slate-300 focus:outline-none">
-                                <option value="ALL">All Certificate Statuses</option>
-                                <option value="ISSUED">Govt Certificate Issued</option>
-                                <option value="PENDING">Pending Certificate</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Directory Table -->
-                    <div class="overflow-x-auto border border-slate-800 rounded-xl">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-slate-900/90 text-slate-400 font-mono uppercase tracking-wider border-b border-slate-800">
-                                    <th class="py-3 px-4">Candidate</th>
-                                    <th class="py-3 px-4">Roll / Reg No</th>
-                                    <th class="py-3 px-4">Course Program</th>
-                                    <th class="py-3 px-4">Govt Cert ID</th>
-                                    <th class="py-3 px-4">Fee Status</th>
-                                    <th class="py-3 px-4 text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="directory-table-body" class="divide-y divide-slate-800/60 font-sans">
-                                <!-- Dynamic Rows -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 4: CERTIFICATE VAULT -->
-            <section id="tab-vault" class="tab-content hidden space-y-6">
-                <div class="glass-panel rounded-2xl border border-slate-800 p-6">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div>
-                            <div class="flex items-center space-x-2 text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">
-                                <i class="fa-solid fa-lock"></i> Digital Vault Repository
-                            </div>
-                            <h2 class="text-2xl font-bold font-orbitron text-white mt-1">Issued Govt Certificates</h2>
-                            <p class="text-xs text-slate-400">Cryptographically verifiable certificates with government recognition identifiers.</p>
-                        </div>
-                        <div class="text-xs bg-slate-900 border border-emerald-500/30 text-emerald-400 px-3.5 py-2 rounded-xl font-mono flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            <span>Holographic Seals Encrypted</span>
-                        </div>
-                    </div>
-
-                    <div id="vault-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Dynamic Holographic Vault Cards -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 5: CERTIFICATE VERIFICATION PORTAL -->
-            <section id="tab-verify" class="tab-content hidden space-y-6">
-                <div class="max-w-3xl mx-auto glass-panel glass-panel-glow rounded-2xl border border-slate-800 p-6 sm:p-10 text-center relative overflow-hidden">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500/20 to-cyan-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-
-                    <h2 class="text-2xl sm:text-3xl font-extrabold font-orbitron text-white">
-                        Government & ISO Verification Portal
-                    </h2>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-md mx-auto">
-                        Enter any official Certificate ID (e.g., <code class="text-amber-400 font-mono">MH-GOVT-VERI-2026-9842-X7</code>) or Roll Number to authenticate student credentials.
-                    </p>
-
-                    <div class="mt-6 flex flex-col sm:flex-row gap-2 max-w-xl mx-auto">
-                        <div class="relative flex-1">
-                            <input type="text" id="verify-input" placeholder="Enter Govt Cert ID or Roll No..." class="w-full text-xs font-mono font-bold bg-slate-950 border border-slate-700 rounded-xl pl-4 pr-3 py-3 text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none uppercase">
-                        </div>
-                        <button onclick="executeGovtVerification()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs px-6 py-3 rounded-xl transition shadow-lg shadow-amber-500/20 font-mono">
-                            VERIFY CREDENTIAL
-                        </button>
-                    </div>
-
-                    <!-- Verification Output Box -->
-                    <div id="verify-result-container" class="mt-8 text-left hidden">
-                        <!-- Dynamic Verification Output -->
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-    <!-- CERTIFICATE DISPLAY & PRINT MODAL -->
-    <div id="certificate-modal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto no-print">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl max-w-4xl w-full p-4 sm:p-6 my-8 space-y-4 max-h-[95vh] overflow-y-auto">
-            
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div class="flex items-center space-x-2">
-                    <span class="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
-                    <h3 class="font-bold text-white text-sm font-orbitron">Govt-Recognized Holographic Certificate Preview</h3>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <button onclick="triggerCertificatePrint()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition shadow-lg shadow-amber-500/20 flex items-center space-x-2">
-                        <i class="fa-solid fa-print"></i>
-                        <span>Print / Save Official PDF</span>
-                    </button>
-                    <button onclick="closeCertificateModal()" class="text-slate-400 hover:text-white p-2">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Certificate Visual Printable Layout -->
-            <div class="bg-slate-950 p-2 sm:p-6 rounded-xl flex justify-center overflow-x-auto">
-                <div id="certificate-printable-wrapper" class="w-full max-w-3xl bg-white text-slate-900 p-8 sm:p-12 rounded-sm shadow-2xl relative border-[12px] border-slate-900 outline outline-2 outline-amber-500/80 -outline-offset-8 cert-bg-pattern min-w-[650px]">
-                    
-                    <!-- Top Ribbon Header -->
-                    <div class="flex items-center justify-between border-b-2 border-amber-600/40 pb-4 mb-6">
-                        <div class="text-left">
-                            <span class="text-[9px] font-mono font-bold text-amber-700 uppercase tracking-widest block">Govt. Reg. ISO 9001:2015 Center</span>
-                            <span id="cert-display-govt-tag" class="text-[10px] font-bold text-slate-700 uppercase tracking-wider block">MH State Skill Board Approved</span>
-                        </div>
-                        
-                        <!-- Center Crest -->
-                        <div class="text-center">
-                            <div class="w-14 h-14 bg-slate-900 text-amber-400 rounded-full border-2 border-amber-500 flex items-center justify-center text-2xl mx-auto shadow-md">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                        </div>
-
-                        <div class="text-right font-mono text-[10px] text-slate-600">
-                            <p class="font-bold text-amber-800" id="cert-display-id">MH-GOVT-VERI-2026-9842-X7</p>
-                            <p class="text-[9px] text-slate-500">Security Hash Encrypted</p>
-                        </div>
-                    </div>
-
-                    <!-- Institute Title -->
-                    <div class="text-center space-y-1">
-                        <h1 class="font-certTitle font-black text-3xl sm:text-4xl text-slate-950 tracking-wider">AAYESHA INSTITUTE</h1>
-                        <p class="text-[11px] font-bold text-amber-800 tracking-widest uppercase">Autonomous Center for Advanced Technology & Professional Studies</p>
-                        <div class="w-40 h-0.5 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto my-2"></div>
-                        <p class="font-certTitle italic text-sm text-slate-700 font-bold">Certificate of Professional Excellence</p>
-                    </div>
-
-                    <!-- Student Certificate Body Text -->
-                    <div class="text-center mt-6 space-y-3">
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-mono">This is to officially certify that</p>
-                        <h2 id="cert-display-name" class="font-certTitle text-2xl sm:text-3xl font-extrabold text-slate-950 underline decoration-amber-500 decoration-2 underline-offset-4">---</h2>
-                        
-                        <p class="text-xs text-slate-700">
-                            Son / Daughter of <span id="cert-display-father" class="font-bold text-slate-900">---</span>
-                        </p>
-
-                        <p class="text-xs text-slate-600 max-w-xl mx-auto leading-relaxed pt-2">
-                            has successfully completed the government-recognized prescribed course & practical evaluation in
-                        </p>
-
-                        <div class="py-2">
-                            <span id="cert-display-course" class="font-certTitle text-base sm:text-lg font-bold text-slate-950 bg-amber-50 px-5 py-2 rounded-lg border border-amber-300 inline-block shadow-sm">---</span>
-                        </div>
-
-                        <p class="text-xs text-slate-700">
-                            with Course Duration <span id="cert-display-duration" class="font-bold">6 Months</span> and achieved Grade <span id="cert-display-grade" class="font-bold text-amber-800">A+ Grade</span>.
-                        </p>
-                    </div>
-
-                    <!-- Certificate Bottom Security Footer -->
-                    <div class="mt-8 pt-6 border-t-2 border-slate-200 flex items-end justify-between relative">
-                        
-                        <!-- Left Details & Barcode -->
-                        <div class="space-y-2 text-left">
-                            <div class="space-y-0.5 font-mono text-[10px] text-slate-700">
-                                <p><span class="text-slate-400">Roll / Reg No:</span> <span id="cert-display-roll" class="font-bold text-slate-900">AI-2026-0101</span></p>
-                                <p><span class="text-slate-400">Issue Date:</span> <span id="cert-display-date" class="font-bold text-slate-800">19 Sept 2026</span></p>
-                                <p><span class="text-slate-400">Digital Hash:</span> <span id="cert-display-hash" class="text-[9px] text-slate-500">0x8f4a21e93bc102</span></p>
-                            </div>
-                            <!-- Barcode SVG style -->
-                            <div class="w-32 h-6 barcode-strip border border-slate-300 rounded-xs"></div>
-                        </div>
-
-                        <!-- Center Holographic Govt Stamp -->
-                        <div class="text-center relative">
-                            <div class="w-16 h-16 rounded-full hologram-seal flex items-center justify-center text-[9px] font-mono font-bold text-slate-950 text-center leading-tight shadow-md p-1">
-                                GOVT APPR<br>2026<br>VERIFIED
-                            </div>
-                            <span class="text-[8px] font-mono text-slate-500 uppercase tracking-widest mt-1 block">Security Seal</span>
-                        </div>
-
-                        <!-- Right QR & Signature -->
-                        <div class="text-right space-y-2">
-                            <div class="flex items-center justify-end space-x-3">
-                                <img id="cert-display-qr" src="" class="w-14 h-14 border border-slate-300 p-0.5 bg-white rounded shadow-sm">
-                                <div class="text-center">
-                                    <p class="font-signature text-3xl text-slate-900 font-bold -mb-2">Aayesha S.</p>
-                                    <div class="w-24 h-0.5 bg-slate-800 mx-auto"></div>
-                                    <p class="text-[9px] font-bold text-slate-800 uppercase tracking-wider mt-0.5">Director Seal</p>
-                                    <p class="text-[8px] text-slate-500">Aayesha Board</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden Printable Output Container for Browser Printing -->
-    <div id="printable-certificate-container" class="hidden"></div>
-
-    <!-- Toast Notification Overlay -->
-    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
-
-    <script>
-        const STORAGE_KEY = 'AAYESHA_INSTITUTE_CANDIDATES_2026_V2';
-
-        // Sample candidate records with official 2026 Govt Verification IDs
-        const SAMPLE_CANDIDATES = [
-            {
-                id: '1001',
-                name: 'Mohammad Aadil Khan',
-                fatherName: 'Farooq Khan',
-                dob: '2001-05-14',
-                gender: 'Male',
-                mobile: '9812345678',
-                email: 'aadil.khan@example.com',
-                photo: 'https://placehold.co/150x150/0b0f19/f59e0b?text=Aadil',
-                courseName: 'Advance Diploma in Computer Applications (ADCA)',
-                rollNo: 'AI-2026-8801',
-                duration: '6 Months',
-                startDate: '2026-01-10',
-                endDate: '2026-07-10',
-                grade: 'A+ Grade (Outstanding Performance)',
-                govtCertId: 'MH-GOVT-VERI-2026-9842-X7',
-                govtAffiliation: 'MH State Board & Skill Development Recognized',
-                totalFee: 12000,
-                paidFee: 12000,
-                paymentStatus: 'FULL PAID',
-                certIssued: true,
-                issueDate: '2026-07-15',
-                securityHash: '0x7f2a11b98ec349'
-            },
-            {
-                id: '1002',
-                name: 'Ayesha Siddiqui',
-                fatherName: 'Rashid Siddiqui',
-                dob: '2002-08-22',
-                gender: 'Female',
-                mobile: '9898765432',
-                email: 'ayesha.sid@example.com',
-                photo: 'https://placehold.co/150x150/0b0f19/f59e0b?text=Ayesha',
-                courseName: 'Diploma in Financial Accounting & Tally Prime GST',
-                rollNo: 'AI-2026-8802',
-                duration: '3 Months',
-                startDate: '2026-03-01',
-                endDate: '2026-06-01',
-                grade: 'A+ Grade (Outstanding Performance)',
-                govtCertId: 'ISO-9001-REG-2026-4482-MH',
-                govtAffiliation: 'ISO 9001:2015 Certified Educational Quality Standard',
-                totalFee: 8500,
-                paidFee: 8500,
-                paymentStatus: 'FULL PAID',
-                certIssued: true,
-                issueDate: '2026-06-05',
-                securityHash: '0x9d4e55a12cc881'
-            },
-            {
-                id: '1003',
-                name: 'Rohan Sharma',
-                fatherName: 'Sunil Sharma',
-                dob: '2000-11-03',
-                gender: 'Male',
-                mobile: '9765432109',
-                email: 'rohan.sharma@example.com',
-                photo: 'https://placehold.co/150x150/0b0f19/f59e0b?text=Rohan',
-                courseName: 'Full Stack Web & AI Software Development',
-                rollNo: 'AI-2026-8803',
-                duration: '12 Months (1 Year)',
-                startDate: '2025-09-01',
-                endDate: '2026-09-01',
-                grade: 'A Grade (Excellent)',
-                govtCertId: 'MSME-ACT-MH-2026-8819',
-                govtAffiliation: 'MSME Govt. of India Registered Center',
-                totalFee: 25000,
-                paidFee: 25000,
-                paymentStatus: 'FULL PAID',
-                certIssued: true,
-                issueDate: '2026-09-05',
-                securityHash: '0x4b11f88a29ee10'
-            },
-            {
-                id: '1004',
-                name: 'Zoya Fatima',
-                fatherName: 'Ibrahim Fatima',
-                dob: '2003-01-19',
-                gender: 'Female',
-                mobile: '9823456789',
-                email: 'zoya.f@example.com',
-                photo: 'https://placehold.co/150x150/0b0f19/f59e0b?text=Zoya',
-                courseName: 'Graphic Design, UI/UX & Digital Media',
-                rollNo: 'AI-2026-8804',
-                duration: '3 Months',
-                startDate: '2026-06-01',
-                endDate: '2026-09-01',
-                grade: 'A Grade (Excellent)',
-                govtCertId: 'MH-GOVT-VERI-2026-3391-Z2',
-                govtAffiliation: 'MH State Board & Skill Development Recognized',
-                totalFee: 10000,
-                paidFee: 6000,
-                paymentStatus: 'PARTIAL (Bal: ₹4000)',
-                certIssued: false,
-                issueDate: '',
-                securityHash: '0x1a88b22c90df54'
-            }
-        ];
-
-        let candidatePhotoBase64 = null;
-
-        function getStoredCandidates() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            if (!data) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_CANDIDATES));
-                return SAMPLE_CANDIDATES;
-            }
-            try {
-                return JSON.parse(data);
-            } catch (e) {
-                console.error('Error parsing LocalStorage:', e);
-                return SAMPLE_CANDIDATES;
-            }
-        }
-
-        function saveStoredCandidates(candidates) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(candidates));
-            updateBadgesAndCounters();
-            renderDashboardRecentTable();
-        }
-
-        function restoreDefaultData() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_CANDIDATES));
-            updateBadgesAndCounters();
-            renderDashboardRecentTable();
-            renderCandidateDirectory();
-            renderCertificateVault();
-            showToast('Default sample records restored!', 'info');
-        }
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById(`tab-${tabId}`);
-            if (target) target.classList.remove('hidden');
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('bg-slate-800', 'text-white', 'border', 'border-slate-700', 'shadow-md');
-                btn.classList.add('text-slate-300', 'hover:bg-slate-800/80');
-            });
-
-            const activeBtn = document.getElementById(`nav-${tabId}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800/80');
-                activeBtn.classList.add('bg-slate-800', 'text-white', 'border', 'border-slate-700', 'shadow-md');
-            }
-
-            if (tabId === 'directory') renderCandidateDirectory();
-            if (tabId === 'vault') renderCertificateVault();
-            if (tabId === 'dashboard') updateBadgesAndCounters();
-        }
-
-        function generateGovtCertIDFormat() {
-            const prefixes = ['MH-GOVT-VERI-2026', 'ISO-9001-REG-2026', 'MSME-ACT-MH-2026'];
-            const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            const randomNum = Math.floor(1000 + Math.random() * 9000);
-            const randomChar = String.fromCharCode(65 + Math.floor(Math.random() * 26)) + Math.floor(1 + Math.random() * 9);
-            return `${prefix}-${randomNum}-${randomChar}`;
-        }
-
-        function generateNewGovtCertID() {
-            const input = document.getElementById('govt-cert-id');
-            if (input) {
-                input.value = generateGovtCertIDFormat();
-            }
-        }
-
-        function generateHash() {
-            return '0x' + Array.from({length: 12}, () => Math.floor(Math.random() * 16).toString(16)).join('');
-        }
-
-        function calculateFeeStatus() {
-            const total = Number(document.getElementById('total-fee').value) || 0;
-            const paid = Number(document.getElementById('paid-fee').value) || 0;
-            const statusInput = document.getElementById('payment-status');
-
-            if (paid >= total) {
-                statusInput.value = 'FULL PAID';
-                statusInput.className = 'w-full text-xs bg-slate-950 border border-slate-800 text-emerald-400 font-bold px-3.5 py-2.5 rounded-xl focus:outline-none';
-            } else {
-                const bal = total - paid;
-                statusInput.value = `PARTIAL (Bal: ₹${bal})`;
-                statusInput.className = 'w-full text-xs bg-slate-950 border border-slate-800 text-amber-400 font-bold px-3.5 py-2.5 rounded-xl focus:outline-none';
-            }
-        }
-
-        function updateBadgesAndCounters() {
-            const candidates = getStoredCandidates();
-            const totalCount = candidates.length;
-            const certsCount = candidates.filter(c => c.certIssued).length;
-            const totalFees = candidates.reduce((sum, c) => sum + (Number(c.paidFee) || 0), 0);
-
-            document.getElementById('stat-total-candidates').innerText = totalCount;
-            document.getElementById('stat-certs-issued').innerText = certsCount;
-            document.getElementById('badge-total-students').innerText = totalCount;
-            document.getElementById('badge-total-certs').innerText = certsCount;
-            document.getElementById('stat-fees-collected').innerText = `₹${totalFees.toLocaleString('en-IN')}`;
-        }
-
-        function renderDashboardRecentTable() {
-            const candidates = getStoredCandidates().slice(-5).reverse();
-            const tbody = document.getElementById('dashboard-recent-table');
-            tbody.innerHTML = '';
-
-            if (candidates.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-slate-500 font-mono">No student records found.</td></tr>`;
-                return;
-            }
-
-            candidates.forEach(cand => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-800/40 transition';
-
-                const certBadge = cand.certIssued
-                    ? `<span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-mono font-bold px-2 py-0.5 rounded-md"><i class="fa-solid fa-seal-check mr-1"></i>Issued</span>`
-                    : `<span class="bg-slate-800 text-slate-400 text-[10px] font-mono px-2 py-0.5 rounded-md">Pending</span>`;
-
-                tr.innerHTML = `
-                    <td class="py-3.5 px-4 flex items-center space-x-3">
-                        <img src="${cand.photo || 'https://placehold.co/100'}" class="w-8 h-8 rounded-lg object-cover border border-slate-700">
-                        <div>
-                            <p class="font-bold text-white">${cand.name}</p>
-                            <p class="text-[10px] text-slate-400 font-mono">Mobile: ${cand.mobile}</p>
-                        </div>
-                    </td>
-                    <td class="py-3.5 px-4 font-mono text-cyan-400 font-bold">${cand.rollNo}</td>
-                    <td class="py-3.5 px-4 max-w-[180px] truncate text-slate-300">${cand.courseName}</td>
-                    <td class="py-3.5 px-4 font-mono text-amber-400 font-bold">${cand.govtCertId}</td>
-                    <td class="py-3.5 px-4">${certBadge}</td>
-                    <td class="py-3.5 px-4 text-right">
-                        <button onclick="displayHolographicCertificate('${cand.id}')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] px-3 py-1 rounded-lg transition shadow">
-                            <i class="fa-solid fa-certificate mr-1"></i> View Cert
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function previewCandidatePhoto(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    candidatePhotoBase64 = e.target.result;
-                    document.getElementById('photo-preview-img').src = candidatePhotoBase64;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function handleCandidateSubmit(event) {
-            event.preventDefault();
-            const submitter = event.submitter;
-            const action = submitter ? submitter.value : 'save_only';
-
-            const candidates = getStoredCandidates();
-            const editId = document.getElementById('edit-candidate-id').value;
-
-            const rollInput = document.getElementById('roll-no').value.trim() || `AI-2026-${Math.floor(1000 + Math.random()*9000)}`;
-            const govtCertInput = document.getElementById('govt-cert-id').value || generateGovtCertIDFormat();
-
-            const candidateData = {
-                id: editId || Date.now().toString(),
-                name: document.getElementById('candidate-name').value.trim(),
-                fatherName: document.getElementById('father-name').value.trim(),
-                dob: document.getElementById('dob').value,
-                gender: document.getElementById('gender').value,
-                mobile: document.getElementById('mobile').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                photo: candidatePhotoBase64 || document.getElementById('photo-preview-img').src,
-                courseName: document.getElementById('course-name').value,
-                rollNo: rollInput,
-                duration: document.getElementById('duration').value,
-                startDate: document.getElementById('start-date').value,
-                endDate: document.getElementById('end-date').value,
-                grade: document.getElementById('grade').value,
-                govtCertId: govtCertInput,
-                govtAffiliation: document.getElementById('govt-affiliation').value,
-                totalFee: Number(document.getElementById('total-fee').value) || 0,
-                paidFee: Number(document.getElementById('paid-fee').value) || 0,
-                paymentStatus: document.getElementById('payment-status').value,
-                certIssued: action === 'save_and_certify',
-                issueDate: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
-                securityHash: generateHash()
-            };
-
-            if (editId) {
-                const idx = candidates.findIndex(c => c.id === editId);
-                if (idx !== -1) candidates[idx] = candidateData;
-                showToast('Candidate Record Updated Successfully!', 'success');
-            } else {
-                candidates.push(candidateData);
-                showToast('New Candidate Admitted & Registered!', 'success');
-            }
-
-            saveStoredCandidates(candidates);
-            resetAdmissionForm();
-
-            if (action === 'save_and_certify') {
-                displayHolographicCertificate(candidateData.id);
-            } else {
-                switchTab('directory');
-            }
-        }
-
-        function resetAdmissionForm() {
-            document.getElementById('admission-form').reset();
-            document.getElementById('edit-candidate-id').value = '';
-            candidatePhotoBase64 = null;
-            document.getElementById('photo-preview-img').src = 'https://placehold.co/150x150/0b0f19/f59e0b?text=Student';
-            document.getElementById('roll-no').value = `AI-2026-${Math.floor(1000 + Math.random()*9000)}`;
-            generateNewGovtCertID();
-            calculateFeeStatus();
-        }
-
-        function renderCandidateDirectory() {
-            const candidates = getStoredCandidates();
-            const search = document.getElementById('dir-search').value.toLowerCase();
-            const courseFilter = document.getElementById('dir-filter-course').value;
-            const statusFilter = document.getElementById('dir-filter-status').value;
-
-            const filtered = candidates.filter(c => {
-                const matchSearch = c.name.toLowerCase().includes(search) || 
-                                    c.rollNo.toLowerCase().includes(search) || 
-                                    (c.govtCertId && c.govtCertId.toLowerCase().includes(search));
                 
-                const matchCourse = courseFilter === 'ALL' || c.courseName.includes(courseFilter);
-                const matchStatus = statusFilter === 'ALL' || 
-                                    (statusFilter === 'ISSUED' && c.certIssued) || 
-                                    (statusFilter === 'PENDING' && !c.certIssued);
+                <form id="admissionForm" onsubmit="generateCertificate(event)">
+                    <div class="form-group">
+                        <label for="fullName">Student Full Name</label>
+                        <input type="text" id="fullName" placeholder="e.g. Rahul Sharma" required>
+                    </div>
 
-                return matchSearch && matchCourse && matchStatus;
+                    <div class="form-group">
+                        <label for="fatherName">Father's Name</label>
+                        <input type="text" id="fatherName" placeholder="e.g. Suresh Sharma" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courseName">Course Name</label>
+                        <select id="courseName" required>
+                            <option value="">Select Course</option>
+                            <option value="Advanced Diploma in Computer Applications (ADCA)">ADCA</option>
+                            <option value="Master in Tally Prime & GST">Tally Prime GST</option>
+                            <option value="Web Development & Programming">Web Development</option>
+                            <option value="Graphic Design & UI/UX">Graphic Design</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issueDate">Completion Date</label>
+                        <input type="date" id="issueDate" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-certificate"></i> Generate Official Certificate
+                    </button>
+                </form>
+            </section>
+
+            <!-- Live Certificate View Section -->
+            <section class="card">
+                <div class="card-title no-print">
+                    <i class="fa-solid fa-file-contract"></i> Live Certificate Preview
+                </div>
+
+                <div class="certificate-frame" id="printableCertificate">
+                    <div class="cert-header">
+                        <div class="cert-title">AAYESHA INSTITUTE</div>
+                        <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">An ISO 9001:2026 Certified Educational Institution</div>
+                        <div class="cert-id-tag">
+                            Cert ID: <span id="certID">GOV-AI-2026-XXXXXX</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-body">
+                        <p style="font-size: 0.9rem; color: #475569;">This is to certify that</p>
+                        <div class="candidate-name" id="displayCandidateName">Candidate Name</div>
+                        <p style="font-size: 0.85rem; color: #475569; margin-top: 4px;">Son/Daughter of <strong id="displayFatherName" style="color:#0f172a;">Father Name</strong></p>
+                        
+                        <p style="font-size: 0.9rem; color: #475569; margin-top: 15px;">
+                            has successfully completed the course in
+                        </p>
+                        <h4 id="displayCourse" style="color: var(--gold); margin-top: 6px; font-size: 1.1rem;">Course Name</h4>
+                        <p style="font-size: 0.8rem; color: #64748b; margin-top: 10px;">
+                            Date of Issue: <span id="displayDate">--/--/----</span>
+                        </p>
+                    </div>
+
+                    <div class="cert-footer">
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            Verified Stamp
+                        </div>
+                        <div class="signature-box">
+                            <div class="signature-line"></div>
+                            Authorized Director
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-success no-print" onclick="window.print()">
+                    <i class="fa-solid fa-print"></i> Print / Save as PDF
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Script Section -->
+    <script>
+        // Set Default Date to Today
+        document.getElementById('issueDate').valueAsDate = new Date();
+
+        // Unique Govt Certificate ID Generator
+        function generateUniqueCertID() {
+            const prefix = "GOV-AI";
+            const year = new Date().getFullYear();
+            const randomDigits = Math.floor(100000 + Math.random() * 900000);
+            return `${prefix}-${year}-${randomDigits}`;
+        }
+
+        // Live Certificate Rendering
+        function generateCertificate(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const father = document.getElementById('fatherName').value;
+            const course = document.getElementById('courseName').value;
+            const dateVal = document.getElementById('issueDate').value;
+
+            // Formatted Date
+            const formattedDate = new Date(dateVal).toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
             });
 
-            const tbody = document.getElementById('directory-table-body');
-            tbody.innerHTML = '';
-
-            if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-slate-500 font-mono">No matching records found.</td></tr>`;
-                return;
-            }
-
-            filtered.forEach(cand => {
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-800/40 transition border-b border-slate-800/60';
-
-                tr.innerHTML = `
-                    <td class="py-3.5 px-4 flex items-center space-x-3">
-                        <img src="${cand.photo || 'https://placehold.co/100'}" class="w-9 h-9 rounded-lg object-cover border border-slate-700">
-                        <div>
-                            <p class="font-bold text-white">${cand.name}</p>
-                            <p class="text-[10px] text-slate-400">S/o: ${cand.fatherName}</p>
-                        </div>
-                    </td>
-                    <td class="py-3.5 px-4 font-mono font-bold text-cyan-400">${cand.rollNo}</td>
-                    <td class="py-3.5 px-4 max-w-[180px] truncate text-slate-300">${cand.courseName}</td>
-                    <td class="py-3.5 px-4 font-mono text-amber-400 font-bold">${cand.govtCertId}</td>
-                    <td class="py-3.5 px-4 font-mono text-[11px] font-bold ${cand.paymentStatus.includes('FULL') ? 'text-emerald-400' : 'text-amber-400'}">${cand.paymentStatus}</td>
-                    <td class="py-3.5 px-4 text-center space-x-1">
-                        <button onclick="editCandidateRecord('${cand.id}')" title="Edit Student" class="p-1.5 text-slate-400 hover:text-indigo-400 hover:bg-slate-800 rounded-lg transition">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <button onclick="displayHolographicCertificate('${cand.id}')" title="Certificate" class="p-1.5 text-slate-400 hover:text-amber-400 hover:bg-slate-800 rounded-lg transition">
-                            <i class="fa-solid fa-award"></i>
-                        </button>
-                        <button onclick="deleteCandidateRecord('${cand.id}')" title="Delete" class="p-1.5 text-slate-400 hover:text-red-400 hover:bg-slate-800 rounded-lg transition">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
+            // Set dynamic values in Certificate
+            document.getElementById('certID').innerText = generateUniqueCertID();
+            document.getElementById('displayCandidateName').innerText = name;
+            document.getElementById('displayFatherName').innerText = father;
+            document.getElementById('displayCourse').innerText = course;
+            document.getElementById('displayDate').innerText = formattedDate;
         }
-
-        function editCandidateRecord(id) {
-            const candidates = getStoredCandidates();
-            const cand = candidates.find(c => c.id === id);
-            if (!cand) return;
-
-            switchTab('admission');
-            document.getElementById('edit-candidate-id').value = cand.id;
-            document.getElementById('candidate-name').value = cand.name;
-            document.getElementById('father-name').value = cand.fatherName;
-            document.getElementById('dob').value = cand.dob;
-            document.getElementById('gender').value = cand.gender;
-            document.getElementById('mobile').value = cand.mobile;
-            document.getElementById('email').value = cand.email;
-            document.getElementById('course-name').value = cand.courseName;
-            document.getElementById('roll-no').value = cand.rollNo;
-            document.getElementById('duration').value = cand.duration;
-            document.getElementById('start-date').value = cand.startDate || '';
-            document.getElementById('end-date').value = cand.endDate || '';
-            document.getElementById('grade').value = cand.grade;
-            document.getElementById('govt-cert-id').value = cand.govtCertId;
-            document.getElementById('govt-affiliation').value = cand.govtAffiliation || 'MH-GOVT-ED-RECG';
-            document.getElementById('total-fee').value = cand.totalFee;
-            document.getElementById('paid-fee').value = cand.paidFee;
-            document.getElementById('payment-status').value = cand.paymentStatus;
-
-            if (cand.photo) {
-                document.getElementById('photo-preview-img').src = cand.photo;
-            }
-
-            showToast('Student record loaded for modification.', 'info');
-        }
-
-        function deleteCandidateRecord(id) {
-            const candidates = getStoredCandidates();
-            const cand = candidates.find(c => c.id === id);
-            if (!cand) return;
-
-            if (confirm(`Remove record for ${cand.name}?`)) {
-                const updated = candidates.filter(c => c.id !== id);
-                saveStoredCandidates(updated);
-                renderCandidateDirectory();
-                showToast(`Record deleted.`, 'info');
-            }
-        }
-
-        function renderCertificateVault() {
-            const candidates = getStoredCandidates().filter(c => c.certIssued);
-            const grid = document.getElementById('vault-grid');
-            grid.innerHTML = '';
-
-            if (candidates.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-mono">
-                    <i class="fa-solid fa-certificate text-4xl mb-3 text-slate-700"></i>
-                    <p>No holographic certificates issued yet.</p>
-                </div>`;
-                return;
-            }
-
-            candidates.forEach(cand => {
-                const card = document.createElement('div');
-                card.className = 'glass-panel rounded-2xl p-5 border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col justify-between relative overflow-hidden group';
-
-                card.innerHTML = `
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <img src="${cand.photo || 'https://placehold.co/100'}" class="w-12 h-12 rounded-xl object-cover border-2 border-amber-500/50">
-                            <div>
-                                <h3 class="font-bold text-white text-sm font-orbitron">${cand.name}</h3>
-                                <p class="text-[11px] text-amber-400 font-mono font-bold">${cand.govtCertId}</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-1.5 text-xs text-slate-400 font-sans">
-                            <p><span class="text-slate-500">Course:</span> <span class="text-slate-200 font-medium">${cand.courseName}</span></p>
-                            <p><span class="text-slate-500">Roll No:</span> <span class="font-mono text-cyan-400">${cand.rollNo}</span></p>
-                            <p><span class="text-slate-500">Evaluation:</span> <span class="text-amber-400 font-bold">${cand.grade.split(' ')[0]}</span></p>
-                            <p><span class="text-slate-500">Issued On:</span> <span>${cand.issueDate || '19 Sept 2026'}</span></p>
-                        </div>
-                    </div>
-
-                    <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
-                        <button onclick="displayHolographicCertificate('${cand.id}')" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center space-x-1 font-mono">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>View Cert</span>
-                        </button>
-                        <button onclick="quickVerifyByCertId('${cand.govtCertId}')" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center space-x-1 font-mono">
-                            <i class="fa-solid fa-shield-check"></i>
-                            <span>Verify ID</span>
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function displayHolographicCertificate(candidateId) {
-            const candidates = getStoredCandidates();
-            const cand = candidates.find(c => c.id === candidateId);
-            if (!cand) return;
-
-            if (!cand.certIssued) {
-                cand.certIssued = true;
-                if (!cand.govtCertId) cand.govtCertId = generateGovtCertIDFormat();
-                cand.issueDate = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-                saveStoredCandidates(candidates);
-            }
-
-            document.getElementById('cert-display-name').innerText = cand.name;
-            document.getElementById('cert-display-father').innerText = cand.fatherName;
-            document.getElementById('cert-display-course').innerText = cand.courseName;
-            document.getElementById('cert-display-duration').innerText = cand.duration;
-            document.getElementById('cert-display-grade').innerText = cand.grade;
-            document.getElementById('cert-display-roll').innerText = cand.rollNo;
-            document.getElementById('cert-display-id').innerText = cand.govtCertId;
-            document.getElementById('cert-display-govt-tag').innerText = cand.govtAffiliation || 'MH State Skill Board Approved';
-            document.getElementById('cert-display-date').innerText = cand.issueDate || '19 Sept 2026';
-            document.getElementById('cert-display-hash').innerText = cand.securityHash || generateHash();
-
-            const qrData = encodeURIComponent(`AAYESHA INSTITUTE GOVT APPROVED CERTIFICATE | Name: ${cand.name} | CertID: ${cand.govtCertId} | Roll: ${cand.rollNo} | SHA256: ${cand.securityHash}`);
-            document.getElementById('cert-display-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrData}`;
-
-            document.getElementById('certificate-modal').classList.remove('hidden');
-        }
-
-        function closeCertificateModal() {
-            document.getElementById('certificate-modal').classList.add('hidden');
-        }
-
-        function triggerCertificatePrint() {
-            const templateHtml = document.getElementById('certificate-printable-wrapper').outerHTML;
-            const printContainer = document.getElementById('printable-certificate-container');
-            printContainer.innerHTML = templateHtml;
-            printContainer.classList.remove('hidden');
-
-            window.print();
-
-            setTimeout(() => {
-                printContainer.classList.add('hidden');
-                printContainer.innerHTML = '';
-            }, 1000);
-        }
-
-        function quickVerifyByCertId(govtCertId) {
-            switchTab('verify');
-            document.getElementById('verify-input').value = govtCertId;
-            executeGovtVerification();
-        }
-
-        function executeGovtVerification() {
-            const query = document.getElementById('verify-input').value.trim().toLowerCase();
-            const container = document.getElementById('verify-result-container');
-            container.classList.remove('hidden');
-
-            if (!query) {
-                container.innerHTML = `
-                    <div class="p-4 bg-red-500/10 text-red-400 rounded-xl text-xs font-mono border border-red-500/30">
-                        Please enter a valid Government Verification Cert ID or Roll Number.
-                    </div>
-                `;
-                return;
-            }
-
-            const candidates = getStoredCandidates();
-            const match = candidates.find(c => 
-                (c.govtCertId && c.govtCertId.toLowerCase() === query) || 
-                (c.rollNo && c.rollNo.toLowerCase() === query)
-            );
-
-            if (match && match.certIssued) {
-                container.innerHTML = `
-                    <div class="bg-emerald-950/40 border-2 border-emerald-500/60 rounded-2xl p-6 space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-500/30 pb-3">
-                            <div class="flex items-center space-x-2 text-emerald-400 font-orbitron font-bold text-sm">
-                                <i class="fa-solid fa-shield-check text-lg"></i>
-                                <span>GOVERNMENT RECOGNIZED & ISO CERTIFIED VERIFICATION VERDICT</span>
-                            </div>
-                            <span class="text-[10px] bg-emerald-500 text-slate-950 font-mono font-black px-2.5 py-1 rounded-md">VERIFIED AUTHENTIC</span>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <img src="${match.photo || 'https://placehold.co/100'}" class="w-16 h-16 rounded-xl object-cover border-2 border-emerald-400">
-                            <div class="space-y-1.5 text-xs text-slate-300 flex-1 font-sans">
-                                <p><span class="text-slate-500">Student Name:</span> <span class="font-bold text-white">${match.name}</span></p>
-                                <p><span class="text-slate-500">Guardian Name:</span> <span class="text-slate-300">${match.fatherName}</span></p>
-                                <p><span class="text-slate-500">Course Program:</span> <span class="text-slate-200">${match.courseName}</span></p>
-                                <p><span class="text-slate-500">Roll / Reg Number:</span> <span class="font-mono text-cyan-400 font-bold">${match.rollNo}</span></p>
-                                <p><span class="text-slate-500">Govt Verification Cert ID:</span> <span class="font-mono text-amber-400 font-bold">${match.govtCertId}</span></p>
-                                <p><span class="text-slate-500">Accreditation:</span> <span class="text-emerald-400 font-medium">${match.govtAffiliation}</span></p>
-                                <p><span class="text-slate-500">Evaluation Grade:</span> <span class="text-amber-400 font-bold">${match.grade}</span></p>
-                                <p><span class="text-slate-500">Issue Date:</span> <span>${match.issueDate || '19 Sept 2026'}</span></p>
-                                <p><span class="text-slate-500">Cryptographic SHA-256:</span> <code class="text-[10px] text-slate-400">${match.securityHash}</code></p>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 border-t border-emerald-500/30 flex items-center justify-between">
-                            <span class="text-[11px] text-emerald-400 font-mono">Matched record against Aayesha Institute 2026 Registry.</span>
-                            <button onclick="displayHolographicCertificate('${match.id}')" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition font-mono">
-                                View Certificate
-                            </button>
-                        </div>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div class="bg-red-950/40 border-2 border-red-500/50 rounded-2xl p-6 text-center space-y-2">
-                        <i class="fa-solid fa-triangle-exclamation text-red-400 text-3xl"></i>
-                        <h4 class="font-bold text-red-400 font-orbitron text-sm">NO MATCHING REGISTRY RECORD</h4>
-                        <p class="text-xs text-slate-400 max-w-sm mx-auto">The entered Government Certificate ID or Roll Number was not located in Aayesha Institute's database.</p>
-                    </div>
-                `;
-            }
-        }
-
-        function exportToCSV() {
-            const candidates = getStoredCandidates();
-            if (candidates.length === 0) return;
-
-            const headers = ['ID', 'Name', 'Father Name', 'Mobile', 'Roll No', 'Course', 'Grade', 'Govt Cert ID', 'Payment Status'];
-            const rows = candidates.map(c => [
-                c.id,
-                `"${c.name}"`,
-                `"${c.fatherName}"`,
-                c.mobile,
-                c.rollNo,
-                `"${c.courseName}"`,
-                `"${c.grade}"`,
-                c.govtCertId,
-                `"${c.paymentStatus}"`
-            ]);
-
-            const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement('a');
-            link.setAttribute('href', encodedUri);
-            link.setAttribute('download', `Aayesha_Institute_2026_Data.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast('Exported CSV file!', 'success');
-        }
-
-        function exportToJSON() {
-            const candidates = getStoredCandidates();
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(candidates, null, 2));
-            const dlAnchor = document.createElement('a');
-            dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `Aayesha_Institute_2026_Data.json`);
-            document.body.appendChild(dlAnchor);
-            dlAnchor.click();
-            dlAnchor.removeChild();
-            showToast('Exported JSON dataset!', 'success');
-        }
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-
-            const bgClass = type === 'success' ? 'bg-slate-900 border-amber-500 text-white' : 'bg-slate-900 border-cyan-500 text-white';
-            const icon = type === 'success' ? 'fa-circle-check text-amber-400' : 'fa-circle-info text-cyan-400';
-
-            toast.className = `pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-xl shadow-2xl border-l-4 ${bgClass} text-xs font-mono transform transition duration-300 translate-y-2 opacity-0`;
-            toast.innerHTML = `
-                <i class="fa-solid ${icon} text-base"></i>
-                <span>${message}</span>
-            `;
-
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2', 'opacity-0');
-            }, 50);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-
-        function updateClock() {
-            const clock = document.getElementById('live-time-ticker');
-            if (clock) {
-                const now = new Date();
-                clock.innerText = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString();
-            }
-        }
-
-        window.onload = function() {
-            setInterval(updateClock, 1000);
-            updateClock();
-
-            document.getElementById('roll-no').value = `AI-2026-${Math.floor(1000 + Math.random()*9000)}`;
-            generateNewGovtCertID();
-
-            updateBadgesAndCounters();
-            renderDashboardRecentTable();
-            switchTab('dashboard');
-        };
     </script>
 </body>
 </html>
